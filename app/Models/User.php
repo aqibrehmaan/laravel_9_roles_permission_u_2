@@ -49,8 +49,8 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
-    public function isAdmin(): bool
+    public function hasRole($name): bool
     {
-        return $this->role()->where('name', 'admin')->exists();
+        return $this->role()->where('name', $name)->exists();
     }
 }

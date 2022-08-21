@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Role;
 use App\Models\Permission;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -49,4 +50,5 @@ class PermissionController extends Controller
         $permission->delete();
         return to_route('admin.permissions.index')->with('message', 'The Permission Deleted.');
     }
+
 }

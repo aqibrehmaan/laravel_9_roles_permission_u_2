@@ -23,4 +23,40 @@
           </div>
 
     </div>
+
+    <div class="mt-12 max-w-6xl mx-auto bg-slate-50 p-4 rounded">
+
+        <div class="flex m-2 p-2">
+           <h2>Permissions</h2>
+           <div class="max-w-md mx-auto">
+                @foreach ($role->permissions as $rp)
+                    <span class="m-2 p-2 bg-indigo-300 rounded-md">{{ $rp->name }}</span>
+                @endforeach
+           </div>
+        </div>
+        <div class="mx-auto mt-12 max-w-md rounded bg-gray-100 p-6">
+            <form action="{{ route('admin.roles.permissions', $role->id) }}" class="space-y-5" method="POST">
+                @csrf
+              <div>
+
+                <label for="" class="text-xl" style="max-width: 300px">
+                    <span class="text-gray-700">Permissions</span>
+                    <select name="permissions[]" id="" class="mt-2 block w-full appearance-none rounded-md border-2 border-gray-100 py-3 px-3 text-gray-800 focus:border-gray-200 focus:text-gray-500 focus:outline-none" multiple>
+                        @foreach ($permissions as $permission)
+                            <option value="{{ $permission->id }}" @selected($role->hasPermission($permission->name))>{{ $permission->name }}</option>
+                        @endforeach
+                    </select>
+                </label>
+
+                @error('name')
+                    <span class="text-sm text-red-400">{{ $message }}</span>
+                @enderror
+
+              </div>
+
+              <button type="submit" class="mt-10 w-full rounded-md bg-indigo-400 py-3 font-medium uppercase text-white hover:bg-indigo-600 hover:shadow-none focus:outline-none">Assign Permissions</button>
+            </form>
+          </div>
+
+    </div>
 </x-admin-layout>

@@ -5,9 +5,8 @@
             <a href="{{ route('admin.permissions.index') }}" class="px-4 py-2 bg-indigo-400 hover:bg-indigo-600 rounded">Back</a>
         </div>
         <div class="mx-auto mt-12 max-w-md rounded bg-gray-100 p-6">
-            <form action="{{ route('admin.permissions.update', $permission->id) }}" class="space-y-5" method="POST">
+            <form action="{{ route('admin.roles.permissions', $permission->id) }}" class="space-y-5" method="POST">
                 @csrf
-                @method('PUT')
               <div>
                 <label for="name" class="text-xl">Name</label>
                 <input id="name" type="text" name="name" value="{{ $permission->name }}" class="mt-2 block w-full appearance-none rounded-md border-2 border-gray-100 py-3 px-3 text-gray-800 focus:border-gray-200 focus:text-gray-500 focus:outline-none" />

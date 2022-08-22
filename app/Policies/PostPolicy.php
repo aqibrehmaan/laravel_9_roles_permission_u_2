@@ -61,7 +61,7 @@ class PostPolicy
      */
     public function update(User $user, Post $post)
     {
-        //
+        return $user->role->hasPermission('update post');
     }
 
     /**
@@ -73,7 +73,7 @@ class PostPolicy
      */
     public function delete(User $user, Post $post)
     {
-        //
+        return $user->role->hasPermission('delete post');
     }
 
     /**
